@@ -3,8 +3,31 @@ function factorial(n) {
   return n * factorial(n - 1);
 }
 
-let result = factorial(5);
-console.log(result);
+// input
+let bucket = factorial(100);
+console.log(bucket);
 
-result = factorial(100);
-console.log(result);
+//remove the unnecessary characters from array
+let stringArray = bucket.toString().split("");
+console.log(stringArray);
+console.log(stringArray.indexOf("e"));
+
+let sliceAt = stringArray.indexOf("e");
+let slicedArray = stringArray.slice(0, sliceAt);
+
+let numbersOnly = (val) => {
+  if (val !== ".") {
+    return val;
+  }
+};
+
+let filteredStringArray = slicedArray.filter(numbersOnly);
+console.log(filteredStringArray);
+
+let result = filteredStringArray.reduce(
+  (previousValue, currentValue) =>
+    parseInt(previousValue) + parseInt(currentValue)
+);
+
+//output
+console.log(`The sum of the digits in 100! is: ${result}`);
